@@ -11,7 +11,7 @@ const RegisterPage = () => {
   return (
     <div className="w-full h-screen flex flex-col items-center">
       <Navbar />
-      <Main classname="my-16">
+      <Main classname='h-auto py-16'>
         <Form>
           <FormInput>
             <InputFieldCommon type="text" id="username" text="Nama Lengkap" />

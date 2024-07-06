@@ -1,7 +1,7 @@
 const Button = (props) => {
-  const { children, classname } = props;
+  const { children, classname, onclick } = props;
   return (
-    <button type="button" className={`flex justify-center items-center w-full py-2 xl:py-3 rounded-xl font-bold ${classname}`}>
+    <button onClick={onclick} type="button" className={`flex justify-center items-center w-full py-2 xl:py-3 rounded-xl font-bold ${classname}`}>
       {children}
     </button>
   );

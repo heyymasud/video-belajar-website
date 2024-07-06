@@ -10,7 +10,7 @@ const LoginPage = () => {
   return (
     <div className="w-full h-screen flex flex-col items-center">
       <Navbar />
-      <Main>
+      <Main classname="h-full">
         <Form>
           <FormInput>
             <InputFieldCommon type="email" id="email" text="Email" />
