@@ -1,10 +1,12 @@
 import Navbar from "../../Components/Layouts/Navbar";
-import Main from "../../Components/Layouts/Main";
+import Main from "../../Components/Layouts/MainAuth";
 import Form from "../../Components/Fragments/Form";
 import FormInput from "../../Components/Fragments/Form/FormInput";
 import InputFieldCommon from "../../Components/Elements/InputField";
 import InputFieldPassword from "../../Components/Elements/InputField/InputFieldPassword";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "../../Components/Elements/Button";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   return (
@@ -20,6 +22,10 @@ const LoginPage = () => {
               text="Kata Sandi"
               icon={<FontAwesomeIcon icon="fa-solid fa-eye" />}
             />
+            <section className="flex flex-col gap-4">
+            <Button classname="bg-primary-500 text-white">Masuk</Button>
+            <Button classname="bg-primary-100 text-primary-500" ><Link to={"/register"} className="w-full">Daftar</Link></Button>
+          </section>
           </FormInput>
         </Form>
       </Main>
