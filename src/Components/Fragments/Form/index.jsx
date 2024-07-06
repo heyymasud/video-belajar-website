@@ -11,7 +11,7 @@ const Form = (props) => {
           {children}
           <section className="flex flex-col gap-4">
             <Button classname="bg-primary-500 text-white">Masuk</Button>
-            <Button classname="bg-primary-100 text-primary-500" ><Link to={"/register"}>Daftar</Link></Button>
+            <Button classname="bg-primary-100 text-primary-500" ><Link to={"/register"} className="w-full">Daftar</Link></Button>
           </section>
           <section className="flex justify-center items-center">
             <hr className="text-slate-500 w-2/5" />
