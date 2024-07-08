@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import formsPlugin from '@tailwindcss/forms'
+
 export default {
   content: [
     "./index.html",
@@ -38,6 +40,8 @@ export default {
         '6/13': '46.112%',
       }
     },
-    plugins: [],
+    plugins: [
+      formsPlugin
+    ],
   }
 }
