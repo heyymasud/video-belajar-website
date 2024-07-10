@@ -2,10 +2,10 @@ import FormHeader from "./FormHeader";
 import Button from "../../Elements/Button";
 
 const Form = (props) => {
-    const { children, onSubmit } = props;
+    const { children, onSubmit, textP, textH } = props;
     return (
       <>
-        <FormHeader />
+        <FormHeader textH={textH} textP={textP}  />
         <form onSubmit={onSubmit} className="w-full flex flex-col justify-center gap-5 xl:gap-6">
           {children}
           

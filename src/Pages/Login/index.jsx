@@ -12,7 +12,7 @@ const LoginPage = () => {
     <div className="w-full h-screen flex flex-col items-center">
       <Navbar />
       <Main classname="h-full">
-        <Form>
+        <Form textH="Masuk ke Akun" textP="Yuk, lanjutin belajarmu di videobelajar.">
           <FormInput>
             <InputFieldCommon type="email" id="email" text="Email" />
             <InputFieldPassword 
