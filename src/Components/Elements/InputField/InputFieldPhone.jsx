@@ -37,7 +37,7 @@ const InputFieldPhone = (props) => {
           </select>
         </section>
         <input
-          className={`py-3 px-2 w-4/6 border border-gray-200 rounded-xl focus:outline-primary-500 ${
+          className={`py-3 px-3 w-4/6 border border-gray-200 rounded-xl focus:outline-primary-500 ${
             errors?.[id] && "border-red-500 focus:outline-red-500"
           }`}
           type={type}

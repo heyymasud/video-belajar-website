@@ -16,7 +16,7 @@ const InputFieldPassword = (props) => {
       </label>
       <section className="relative">
         <input
-          className={`py-3 px-2 w-full border border-gray-200 rounded-xl text-sm focus:outline-primary-500 ${
+          className={`py-3 px-3 w-full border border-gray-200 rounded-xl focus:outline-primary-500 ${
             errors?.[id] && "border-red-500 focus:outline-red-500"
           }`}
           type={open ? "text" : "password"}

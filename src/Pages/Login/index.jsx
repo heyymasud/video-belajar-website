@@ -22,7 +22,7 @@ const LoginPage = () => {
             />
             <section className="flex flex-col gap-4">
             <Button className="bg-primary-500 text-white">Masuk</Button>
-            <Button className="bg-primary-100 text-primary-500" onClick={() => navigate("/register")} >Daftar</Button>
+            <Button className="bg-primary-100 text-primary-500" type="button" onClick={() => navigate("/register")} >Daftar</Button>
           </section>
           </FormInput>
         </Form>
