@@ -2,11 +2,11 @@ import FormHeader from "./FormHeader";
 import Button from "../../Elements/Button";
 
 const Form = (props) => {
-    const { children, onsubmit } = props;
+    const { children, onSubmit } = props;
     return (
       <>
         <FormHeader />
-        <form onSubmit={onsubmit} className="w-full flex flex-col justify-center gap-5 xl:gap-6">
+        <form onSubmit={onSubmit} className="w-full flex flex-col justify-center gap-5 xl:gap-6">
           {children}
           
           <section className="flex justify-center items-center">

@@ -26,7 +26,7 @@ const RegisterPage = () => {
     <div className="w-full h-screen flex flex-col items-center">
       <Navbar />
       <Main classname="h-auto py-16">
-        <Form onsubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <FormInput>
             <InputFieldCommon type="text" id="username" text="Nama Lengkap" />
             <InputFieldCommon type="email" id="email" text="Email" />

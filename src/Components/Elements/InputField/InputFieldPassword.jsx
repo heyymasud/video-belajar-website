@@ -17,7 +17,7 @@ const InputFieldPassword = (props) => {
       <section className="relative">
         <input
           className={`py-3 px-2 w-full border border-gray-200 rounded-xl text-sm focus:outline-primary-500 ${
-            errors[id] && "border-red-500 focus:outline-red-500"
+            errors?.[id] && "border-red-500 focus:outline-red-500"
           }`}
           type={open ? "text" : "password"}
           onPaste={(e) => {
@@ -33,7 +33,7 @@ const InputFieldPassword = (props) => {
         </section>
       </section>
       <section className="text-red-500 text-xs mt-1">
-        {errors[id] && <span>{errors[id].message}</span>}
+        {errors?.[id] && <span>{errors[id].message}</span>}
       </section>
     </section>
   );
