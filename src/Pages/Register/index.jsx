@@ -28,8 +28,36 @@ const RegisterPage = () => {
       <Main classname="h-auto py-16">
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FormInput>
-            <InputFieldCommon type="text" id="username" text="Nama Lengkap" />
-            <InputFieldCommon type="email" id="email" text="Email" />
+            <InputFieldCommon
+              type="text"
+              id="username"
+              text="Nama Lengkap"
+              register={{
+                ...register("username", {
+                  required: "Username wajib diisi",
+                  minLength: {
+                    value: 6,
+                    message: "Username minimal 6 karakter",
+                  },
+                }),
+              }}
+              errors={errors}
+            />
+            <InputFieldCommon
+              type="email"
+              id="email"
+              text="Email"
+              register={{
+                ...register("email", {
+                  required: "Email wajib diisi",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                    message: 'Email tidak valid',
+                  },
+                }),
+              }}
+              errors={errors}
+            />
             <InputFieldPhone type="number" id="phone" text="Nomor Telepon" />
             <InputFieldPassword
               id="password"
