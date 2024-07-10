@@ -9,8 +9,8 @@ import Button from "../../Components/Elements/Button";
 import { useForm } from "react-hook-form";
 import country from "../../Data/country.js";
 import { useNavigate } from "react-router-dom";
-import RegisterModal from "../../Components/Modal/RegisterModal/index.jsx";
 import { useState } from "react";
+import ModalAuth from "../../Components/Modal/ModalAuth/index.jsx";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -119,14 +119,23 @@ const RegisterPage = () => {
               <Button className="bg-primary-500 text-white" type="submit">
                 Daftar
               </Button>
-              <Button type="button" onClick={() => navigate("/login")} className="bg-primary-100 text-primary-500">
+              <Button
+                type="button"
+                onClick={() => navigate("/login")}
+                className="bg-primary-100 text-primary-500"
+              >
                 Masuk
               </Button>
             </section>
           </FormInput>
         </Form>
       </Main>
-      <RegisterModal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <ModalAuth
+        textH="Registrasi Berhasil"
+        textP="Akun Anda telah berhasil dibuat."
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 };
