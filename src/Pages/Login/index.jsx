@@ -5,9 +5,10 @@ import FormInput from "../../Components/Fragments/Form/FormInput";
 import InputFieldCommon from "../../Components/Elements/InputField";
 import InputFieldPassword from "../../Components/Elements/InputField/InputFieldPassword";
 import Button from "../../Components/Elements/Button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full h-screen flex flex-col items-center">
       <Navbar />
@@ -20,8 +21,8 @@ const LoginPage = () => {
               text="Kata Sandi"
             />
             <section className="flex flex-col gap-4">
-            <Button classname="bg-primary-500 text-white">Masuk</Button>
-            <Button classname="bg-primary-100 text-primary-500" ><Link to={"/register"} className="w-full">Daftar</Link></Button>
+            <Button className="bg-primary-500 text-white">Masuk</Button>
+            <Button className="bg-primary-100 text-primary-500" onClick={() => navigate("/register")} >Daftar</Button>
           </section>
           </FormInput>
         </Form>

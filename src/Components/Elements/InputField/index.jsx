@@ -6,7 +6,7 @@ const InputFieldCommon = (props) => {
           {text} <span className="text-red-500">*</span>
         </label>
         <input
-          className={`py-3 px-2 w-full border border-gray-200 rounded-xl text-sm focus:outline-primary-500 ${errors?.[id] && "border-red-500 focus:outline-red-500"}`}
+          className={`py-3 px-2 w-full border border-gray-200 rounded-xl focus:outline-primary-500 ${errors?.[id] && "border-red-500 focus:outline-red-500"}`}
           type={type}
           name={id}
           id={id}

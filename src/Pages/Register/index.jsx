@@ -6,7 +6,6 @@ import InputFieldCommon from "../../Components/Elements/InputField";
 import InputFieldPassword from "../../Components/Elements/InputField/InputFieldPassword";
 import InputFieldPhone from "../../Components/Elements/InputField/InputFieldPhone";
 import Button from "../../Components/Elements/Button";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import country from "../../Data/country.js";
 import { useNavigate } from "react-router-dom";
@@ -117,13 +116,11 @@ const RegisterPage = () => {
               errors={errors}
             />
             <section className="flex flex-col gap-4">
-              <Button classname="bg-primary-500 text-white" type="submit">
+              <Button className="bg-primary-500 text-white" type="submit">
                 Daftar
               </Button>
-              <Button classname="bg-primary-100 text-primary-500">
-                <Link to={"/login"} className="w-full">
-                  Masuk
-                </Link>
+              <Button type="button" onClick={() => navigate("/login")} className="bg-primary-100 text-primary-500">
+                Masuk
               </Button>
             </section>
           </FormInput>

@@ -15,7 +15,7 @@ const Form = (props) => {
             <hr className="text-slate-500 w-2/5" />
           </section>
           <section>
-            <Button classname="bg-white text-slate-700 border border-gray-200 flex justify-center gap-2">
+            <Button type="button" className="bg-white text-slate-700 border border-gray-200 flex justify-center gap-2">
               <img src="./img/google-icon.png" />
               Masuk dengan Google
             </Button>
