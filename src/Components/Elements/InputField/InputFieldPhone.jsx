@@ -1,9 +1,10 @@
 import { useState } from "react";
-import country from "../../../Data/country.js";
+import auth from "../../../Data/authData.js";
 
 const InputFieldPhone = (props) => {
   const { type, text, id, register, errors } = props;
 
+  const country = auth[0].country;
 
   const [selectedCode, setSelectedCode] = useState(country[0].code);
   const [selectedFlag, setSelectedFlag] = useState(country[0].flag);
@@ -18,16 +19,18 @@ const InputFieldPhone = (props) => {
       <label className="text-slate-700 mb-1" htmlFor={id}>
         {text} <span className="text-red-500">*</span>
       </label>
-      <section className="flex justify-between">
-        <section className="flex w-1/3">
-          <label className="w-3/12 bg-slate-100 flex justify-center items-center p-2 rounded-s-xl">
-            <img src={selectedFlag} />
+      <section className="flex justify-between gap-3 md:gap-6">
+        <section className="flex w-10/12 sm:w-5/12">
+          <label className=" bg-slate-100 flex justify-center px-2 items-center rounded-s-xl w-5/12" htmlFor='country'>
+            <img src={selectedFlag} width={24} />
           </label>
           <select
            {...register("country")}
             value={selectedCode}
             onChange={handleChange}
-            className="border border-gray-200 rounded-e-xl w-7/12"
+            className={`border border-gray-200 rounded-e-xl w-full focus:outline-primary-500 ${errors?.[id] && "border-red-500 focus:outline-red-500"}`}
+            name='country'
+            id='country'
           >
             {country.map((c) => (
               <option key={c.code} value={c.code}>
@@ -37,7 +40,7 @@ const InputFieldPhone = (props) => {
           </select>
         </section>
         <input
-          className={`py-3 px-3 w-4/6 border border-gray-200 rounded-xl focus:outline-primary-500 ${
+          className={`py-3 px-3 w-full border border-gray-200 rounded-xl focus:outline-primary-500 ${
             errors?.[id] && "border-red-500 focus:outline-red-500"
           }`}
           type={type}

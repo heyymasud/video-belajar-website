@@ -47,7 +47,7 @@ const LoginPage = () => {
   return (
     <div className="w-full h-screen flex flex-col items-center">
       <Navbar />
-      <Main classname="h-full">
+      <Main classname="h-full py-9">
         <Form
           onSubmit={handleSubmit(onSubmit)}
           textH="Masuk ke Akun"

@@ -7,13 +7,15 @@ import InputFieldPassword from "../../Components/Elements/InputField/InputFieldP
 import InputFieldPhone from "../../Components/Elements/InputField/InputFieldPhone";
 import Button from "../../Components/Elements/Button";
 import { useForm } from "react-hook-form";
-import country from "../../Data/country.js";
+import auth from "../../Data/authData.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ModalAuth from "../../Components/Modal/ModalAuth/index.jsx";
+import InputSelect from "../../Components/Elements/InputSelect/index.jsx";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
+  const country = auth[0].country;
   const [isModalOpen, setIsModalOpen] = useState(false);
   // Handle form events
   const {
@@ -82,6 +84,11 @@ const RegisterPage = () => {
               }}
               errors={errors}
             />
+            <InputSelect
+            text="Jenis Kelamin"
+            id="gender"
+            register={register}
+            errors={errors} />
             <InputFieldPhone
               type="number"
               id="phone"
