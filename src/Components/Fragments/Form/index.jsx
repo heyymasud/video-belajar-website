@@ -14,7 +14,7 @@ const Form = (props) => {
             <span className="text-center w-1/5 text-slate-700">atau</span>
             <hr className="text-slate-500 w-2/5" />
           </section>
-          <section>
+          <section className="flex flex-col">
             <Button type="button" className="bg-white text-slate-700 border border-gray-200 flex justify-center gap-2">
               <img src="./img/google-icon.png" />
               Masuk dengan Google

@@ -30,7 +30,7 @@ const auth = [
         option: "Wanita",
         value: "Wanita",
       },
-    ]
+    ],
   },
 ];
 
