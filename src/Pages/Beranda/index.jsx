@@ -15,9 +15,9 @@ const Beranda = () => {
   return (
     <>
       <Navbar />
-      <main className="h-auto w-full flex flex-col px-5 md:px-[120px]">
+      <main className="h-auto w-full flex flex-col px-5 xl:px-[120px]">
         <header
-          className={`relative flex flex-col items-center w-full h-[400px] rounded-xl my-16 overflow-hidden`}
+          className={`relative flex flex-col items-center w-full h-[400px] rounded-xl my-7 xl:my-16 overflow-hidden`}
         >
           <img
             className="w-full h-full absolute object-cover -z-10"
@@ -31,21 +31,25 @@ const Beranda = () => {
               <h1 className="text-2xl md:text-3xl xl:text-5xl font-bold font-pop">
                 {heroHeader.title}
               </h1>
-              <p className="font-medium text-sm md:text-base">{heroHeader.subtitle}</p>
+              <p className="font-medium text-sm md:text-base">
+                {heroHeader.subtitle}
+              </p>
             </section>
-            <Button className="bg-primary-500 px-4 text-xs md:text-base">{heroHeader.button}</Button>
+            <Button className="bg-primary-500 px-4 text-xs md:text-base">
+              {heroHeader.button}
+            </Button>
           </section>
         </header>
-        <main className="flex flex-col gap-8">
+        <main className="flex flex-col gap-6 xl:gap-8">
           <header className="flex flex-col gap-[10px]">
-            <h3 className="font-pop text-4xl font-semibold">
+            <h3 className="font-pop text-2xl xl:text-4xl font-semibold">
               {mainHeader.title}
             </h3>
-            <p className="text-slate-500 text-base font-medium">
+            <p className="text-slate-500 text-sm xl:text-base font-medium">
               {mainHeader.subtitle}
             </p>
           </header>
-          <section className="font-medium">
+          <section className="font-medium text-sm xl:text-base">
             {mainHeader.navbar.map((item, index) => (
               <button
                 key={index}
@@ -62,51 +66,60 @@ const Beranda = () => {
               </button>
             ))}
           </section>
-          <main className="w-full flex flex-wrap gap-6">
+          <main className="w-full flex flex-wrap gap-5 xl:gap-6">
             {mainCard.map((item, index) => (
               <div
                 key={index}
-                className="w-[32%] h-auto bg-white rounded-xl border border-[#3A35411F] p-5 flex flex-col gap-4"
+                className="w-full xl:w-[32%] h-auto bg-white rounded-xl border border-[#3A35411F] p-4 xl:p-5 flex flex-col gap-2 xl:gap-4"
               >
-                <header>
-                  <img
-                    src={item.cardImage}
-                    alt={item.cardTitle}
-                    height={198}
-                    className="rounded-xl w-full h-[193px] object-cover object-center"
-                  />
-                </header>
-                <section className="flex flex-col gap-2">
-                  <h6 className="font-pop text-lg font-semibold">
-                    {item.cardTitle}
-                  </h6>
-                  <p className="text-slate-500 text-base font-medium">
-                    {item.cardDescription.substring(0, 79)}
-                    {item.cardDescription.length > 100 ? "..." : ""}
-                  </p>
-                </section>
-                <section className="flex gap-[10px] items-center">
-                  <img
-                    src={item.trainerImage}
-                    alt={item.trainer}
-                    className="w-[40px] h-[40px] rounded-xl"
-                  />
-                  <section>
-                    <h3 className="text-lg font-medium">{item.trainer}</h3>
-                    <p className="text-slate-500 text-base font-medium">
-                      {item.trainerJob}
-                      <span className="font-bold">{item.trainerCompany}</span>
-                    </p>
+                <section className="flex flex-row xl:flex-col gap-3 xl:gap-4 items-center xl:items-stretch">
+                  <header>
+                    <img
+                      src={item.cardImage}
+                      alt={item.cardTitle}
+                      className="rounded-xl w-[82px] h-[82px] xl:w-full xl:h-[193px] object-cover object-center"
+                    />
+                  </header>
+                  <section className="flex flex-col gap-2 xl:gap-4 flex-1">
+                    <section className="flex flex-col gap-2">
+                      <h6 className="font-pop text-base xl:text-lg font-semibold">
+                        {item.cardTitle}
+                      </h6>
+                      <p className="text-slate-500 text-base font-medium hidden xl:block">
+                        {item.cardDescription.length > 79
+                          ? `${item.cardDescription.substring(0, 79)}...`
+                          : item.cardDescription}
+                      </p>
+                    </section>
+                    <section className="flex gap-2 xl:gap-[10px] items-center">
+                      <img
+                        src={item.trainerImage}
+                        alt={item.trainer}
+                        className="w-9 xl:w-[40px] h-9 xl:h-[40px] rounded-xl"
+                      />
+                      <section>
+                        <h3 className="text-sm xl:text-lg font-medium">
+                          {item.trainer}
+                        </h3>
+                        <p className=" text-slate-500 text-xs xl:text-base font-normal xl:font-medium">
+                          {item.trainerJob}
+                          <span className="hidden xl:inline">di </span>
+                          <span className="hidden xl:inline font-bold">
+                            {item.trainerCompany}
+                          </span>
+                        </p>
+                      </section>
+                    </section>
                   </section>
                 </section>
                 <footer className="flex justify-between">
                   <section className="flex gap-2 items-center">
                     <img src="./img/rating.png" alt="rating" />
-                    <p className="text-slate-500 font-medium underline">
+                    <p className="text-xs xl:text-sm text-slate-500 font-medium underline">
                       {item.cardRating}
                     </p>
                   </section>
-                  <p className="text-primary-500 font-semibold text-2xl">
+                  <p className="text-primary-500 font-semibold text-xl xl:text-2xl">
                     {item.cardPrice}
                   </p>
                 </footer>

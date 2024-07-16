@@ -14,10 +14,12 @@ const Navbar = () => {
     localStorage.setItem("isLogin", JSON.stringify({ isLogin: false }));
     setIsLogin(false);
     setDropDown(false);
+    setMenuOpen(false);
   };
+
   return (
     <header className="w-full h-auto">
-      <nav className="relative w-full h-auto bg-white border-b md:border-none shadow-lg xl:shadow px-6 md:px-[120px] py-4 xl:py-3 flex justify-between items-center">
+      <nav className="relative w-full h-auto bg-white border-b xl:border-none shadow-lg xl:shadow px-6 xl:px-[120px] py-4 xl:py-3 flex justify-between items-center">
         <img
           className="xl:mx-[22px] max-sm:w-40 h-auto"
           src={header.logo}
@@ -27,12 +29,12 @@ const Navbar = () => {
           location.pathname !== "/register" && (
             <>
               <button
-                className="md:hidden"
+                className="xl:hidden"
                 onClick={() => setMenuOpen(!menuOpen)}
               >
                 <span className="text-3xl">&#9776;</span>
               </button>
-              <section className={`relative hidden md:flex items-center gap-9`}>
+              <section className={`relative hidden xl:flex items-center gap-9`}>
                 <p className="text-slate-500 font-medium cursor-pointer">
                   Kategori
                 </p>
@@ -40,7 +42,7 @@ const Navbar = () => {
                   <>
                     <img
                       alt="profile"
-                      className="w-11 h-11 rounded-xl cursor-pointer hidden md:block"
+                      className="w-11 h-11 rounded-xl cursor-pointer"
                       onClick={() => setDropDown(!dropDown)}
                       src={header.profilePhoto}
                     />
@@ -89,7 +91,7 @@ const Navbar = () => {
               </section>
               {menuOpen && (
                 <section
-                  className={`absolute md:hidden top-[4.8rem] left-0 bg-white w-full flex flex-col rounded-b px-1 z-10`}
+                  className={`absolute xl:hidden top-[4.8rem] left-0 bg-white w-full flex flex-col rounded-b px-1 z-10`}
                 >
                   <p className="text-slate-500 font-medium cursor-pointer px-3 py-4 border-b">
                     Kategori
