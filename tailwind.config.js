@@ -29,6 +29,12 @@ export default {
           300: '#FECAA5',
           400: '#F98256',
           500: '#F64920'
+        },
+        error: {
+          100: '#FCE3D1',
+          200: '#FF5C2B',
+          300: '#DB3D1F',
+          400: '#B72315',
         }
       },
       fontFamily: {
