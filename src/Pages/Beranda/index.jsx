@@ -15,7 +15,7 @@ const Beranda = () => {
   return (
     <>
       <Navbar />
-      <main className="h-auto w-full flex flex-col px-[120px]">
+      <main className="h-auto w-full flex flex-col px-5 md:px-[120px]">
         <header
           className={`relative flex flex-col items-center w-full h-[400px] rounded-xl my-16 overflow-hidden`}
         >
@@ -25,13 +25,15 @@ const Beranda = () => {
             alt="hero-header"
           />
           <section
-            className={`flex flex-col items-center justify-center bg-[#000000CC] h-full w-full px-[140px] py-16 gap-6 text-white text-center rounded-xl`}
+            className={`flex flex-col items-center justify-center bg-[#000000CC] h-full w-full px-5 md:px-[140px] py-16 gap-6 text-white text-center rounded-xl`}
           >
-            <h1 className="text-3xl xl:text-5xl font-bold font-pop">
-              {heroHeader.title}
-            </h1>
-            <p>{heroHeader.subtitle}</p>
-            <Button className="bg-primary-500 px-4">{heroHeader.button}</Button>
+            <section className="flex flex-col gap-3">
+              <h1 className="text-2xl md:text-3xl xl:text-5xl font-bold font-pop">
+                {heroHeader.title}
+              </h1>
+              <p className="font-medium text-sm md:text-base">{heroHeader.subtitle}</p>
+            </section>
+            <Button className="bg-primary-500 px-4 text-xs md:text-base">{heroHeader.button}</Button>
           </section>
         </header>
         <main className="flex flex-col gap-8">
@@ -112,7 +114,9 @@ const Beranda = () => {
             ))}
           </main>
         </main>
-        <section className={`relative w-full h-[400px] rounded-md my-16 overflow-hidden`}>
+        <section
+          className={`relative w-full h-[400px] rounded-md my-16 overflow-hidden`}
+        >
           <img
             className="w-full h-full absolute object-cover -z-10"
             src={heroFooter.image}
