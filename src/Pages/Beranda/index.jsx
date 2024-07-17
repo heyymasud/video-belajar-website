@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../../Components/Elements/Button";
 import Navbar from "../../Components/Layouts/Navbar";
 import main from "../../Data/mainData";
-import footer from "../../Data/footer";
+import MainFooter from "../../Components/Layouts/MainFooter";
 
 const Beranda = () => {
   const { heroHeader, mainHeader, mainCard, heroFooter } = main;
@@ -128,7 +128,7 @@ const Beranda = () => {
           </main>
         </main>
         <section
-          className={`relative w-full h-[400px] rounded-md my-16 overflow-hidden`}
+          className={`relative w-full h-[400px] rounded-md my-6 xl:my-16 overflow-hidden`}
         >
           <img
             className="w-full h-full absolute object-cover -z-10"
@@ -136,90 +136,33 @@ const Beranda = () => {
             alt="hero-footer"
           />
           <section
-            className={`flex flex-col justify-center bg-[#000000CC] h-full w-full px-[337px] gap-10 text-white text-center rounded-xl`}
+            className={`flex flex-col justify-center bg-[#000000CC] h-full w-full px-5 xl:px-[337px] gap-10 text-white text-center rounded-xl`}
           >
             <section className="flex flex-col gap-1">
-              <h3 className="font-medium text-lg text-slate-300">
+              <h3 className="font-medium text-base xl:text-lg text-slate-300">
                 {heroFooter.titleSection}
               </h3>
               <section className="flex flex-col gap-3">
-                <h2 className="font-pop font-semibold text-[32px]">
+                <h2 className="font-pop font-semibold text-2xl xl:text-[32px]">
                   {heroFooter.title}
                 </h2>
-                <p>{heroFooter.subtitle}</p>
+                <p className="text-sm xl:text-base">{heroFooter.subtitle}</p>
               </section>
             </section>
-            <section className="relative">
+            <section className="xl:relative flex flex-col gap-4 xl:block">
               <input
-                className="rounded-xl px-8 py-[18px] w-full"
+                className="rounded-xl xl:px-8 py-3 xl:py-[18px] w-full text-center xl:text-left"
                 type="text"
                 placeholder="Masukkan Emailmu"
               />
-              <Button className="bg-secondary-500 px-6 absolute top-1/2 right-2 -translate-y-1/2">
+              <Button className="bg-secondary-500 px-6 static xl:absolute xl:top-1/2 xl:right-2 xl:-translate-y-1/2">
                 {heroFooter.button}
               </Button>
             </section>
           </section>
         </section>
       </main>
-      <footer className="flex flex-col w-full h-auto px-[120px] py-[60px] bg-white gap-5">
-        <section className="flex justify-between">
-          <section className="flex flex-col gap-4 w-[30%]">
-            <img className="w-[204px] h-14" src={footer.logo} alt="logo" />
-            <section className="flex flex-col gap-3">
-              <p className="text-lg font-bold">{footer.motto}</p>
-              <p>{footer.address}</p>
-              <p>{footer.phone}</p>
-            </section>
-          </section>
-          <section className="flex gap-12">
-            <section className="flex flex-col gap-4">
-              <p className="font-bold">Kategori</p>
-              <ul className="flex flex-col gap-3">
-                {footer.kategori.map((item, index) => (
-                  <li className="text-slate-500 font-medium" key={index}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </section>
-            <section className="flex flex-col gap-4">
-              <p className="font-bold">Perusahaan</p>
-              <ul className="flex flex-col gap-3">
-                {footer.perusahaan.map((item, index) => (
-                  <li className="text-slate-500 font-medium" key={index}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </section>
-            <section className="flex flex-col gap-4">
-              <p className="font-bold">Komunitas</p>
-              <ul className="flex flex-col gap-3">
-                {footer.komunitas.map((item, index) => (
-                  <li className="text-slate-500 font-medium" key={index}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </section>
-        </section>
-        <section className="pt-8 border-b border-slate-300" />
-        <section className="flex justify-between items-center">
-          <p className="text-slate-500 font-medium">{footer.copyright}</p>
-          <section className="flex gap-4">
-            {footer.socialMedia.map((item, index) => (
-              <img
-                className="cursor-pointer"
-                src={item}
-                alt="social media"
-                key={index}
-              />
-            ))}
-          </section>
-        </section>
-      </footer>
+      <MainFooter />
     </>
   );
 };
