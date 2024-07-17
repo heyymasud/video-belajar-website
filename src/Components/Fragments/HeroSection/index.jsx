@@ -27,7 +27,7 @@ const HeroSection = ({
       >
         <section className="flex flex-col gap-1">
           {isFooter && (
-            <h3 className="font-medium text-base xl:text-lg text-slate-300">
+            <h3 className="font-medium text-base tracking-wide xl:text-lg text-light-secondary">
               {titleSection}
             </h3>
           )}
@@ -53,7 +53,7 @@ const HeroSection = ({
         {isFooter ? (
           <InputEmail buttonText={button} />
         ) : (
-          <Button className="bg-primary-500 px-4 text-xs md:text-base">
+          <Button className="bg-primary-500 hover:bg-green-500 px-4 text-xs md:text-base">
             {button}
           </Button>
         )}

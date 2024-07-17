@@ -2,7 +2,7 @@
 const Card = ({cardImage, cardTitle, cardDescription, trainerImage, trainer, trainerJob, trainerCompany, cardRating, cardPrice}) => {
   return (
     <div
-      className="w-full xl:w-[32%] h-auto bg-white rounded-xl border border-[#3A35411F] p-4 xl:p-5 flex flex-col gap-2 xl:gap-4"
+      className="cursor-pointer w-full xl:w-[32%] h-auto bg-light-primary hover:bg-slate-50 rounded-xl border border-[#3A35411F] p-4 xl:p-5 flex flex-col gap-2 xl:gap-4"
     >
       <section className="flex flex-row xl:flex-col gap-3 xl:gap-4 items-center xl:items-stretch">
         <header>
@@ -17,7 +17,7 @@ const Card = ({cardImage, cardTitle, cardDescription, trainerImage, trainer, tra
             <h6 className="font-pop text-base xl:text-lg font-semibold">
               {cardTitle}
             </h6>
-            <p className="text-slate-500 text-base font-medium hidden xl:block">
+            <p className="text-dark-secondary text-base font-medium hidden xl:block">
               {cardDescription.length > 79
                 ? `${cardDescription.substring(0, 79)}...`
                 : cardDescription}
@@ -31,7 +31,7 @@ const Card = ({cardImage, cardTitle, cardDescription, trainerImage, trainer, tra
             />
             <section>
               <h3 className="text-sm xl:text-lg font-medium">{trainer}</h3>
-              <p className=" text-slate-500 text-xs xl:text-base font-normal xl:font-medium">
+              <p className=" text-dark-secondary text-xs xl:text-base font-normal xl:font-medium">
                 {trainerJob}
                 <span className="hidden xl:inline">di </span>
                 <span className="hidden xl:inline font-bold">
@@ -45,7 +45,7 @@ const Card = ({cardImage, cardTitle, cardDescription, trainerImage, trainer, tra
       <footer className="flex justify-between">
         <section className="flex gap-2 items-center">
           <img src="./img/rating.png" alt="rating" />
-          <p className="text-xs xl:text-sm text-slate-500 font-medium underline">
+          <p className="text-xs xl:text-sm text-dark-secondary font-medium underline">
             {cardRating}
           </p>
         </section>

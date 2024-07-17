@@ -7,7 +7,7 @@ const NavbarBeranda = ({navbar, activeIndex, handleNavActive}) => {
           key={index}
           type="button"
           className={`pr-9 py-3 hover:text-tertiary-500 relative ${
-            activeIndex === index ? "text-tertiary-500" : "text-slate-500"
+            activeIndex === index ? "text-tertiary-500" : "text-dark-secondary"
           }`}
           onClick={() => handleNavActive(index)}
         >

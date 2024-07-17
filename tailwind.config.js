@@ -31,10 +31,20 @@ export default {
           500: '#F64920'
         },
         error: {
-          100: '#FCE3D1',
-          200: '#FF5C2B',
-          300: '#DB3D1F',
-          400: '#B72315',
+          'background': '#FCE3D1',
+          'default': '#FF5C2B',
+          'hover': '#DB3D1F',
+          'pressed': '#B72315',
+        },
+        dark: {
+          'disabled': '#3A354161',
+          'secondary': '#333333AD',
+          'primary': '#222325',
+        },
+        light: {
+          'disabled': '#9D9EA1',
+          'secondary': '#C1C2C4',
+          'primary': '#FFFFFF',
         }
       },
       fontFamily: {

@@ -2,20 +2,12 @@ import { useState } from "react";
 import header from "../../../Data/header";
 import Button from "../../Elements/Button";
 import { useNavigate, useLocation } from "react-router-dom";
-const Navbar = () => {
+const Navbar = ({isLogin, handleLogout}) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const user = JSON.parse(localStorage.getItem("isLogin"));
   const [dropDown, setDropDown] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(user?.isLogin || false);
-
-  const handleLogout = () => {
-    localStorage.setItem("isLogin", JSON.stringify({ isLogin: false }));
-    setIsLogin(false);
-    setDropDown(false);
-    setMenuOpen(false);
-  };
+ 
 
   return (
     <header className="w-full h-auto">
@@ -32,10 +24,10 @@ const Navbar = () => {
                 className="xl:hidden"
                 onClick={() => setMenuOpen(!menuOpen)}
               >
-                <span className="text-3xl">&#9776;</span>
+                <span className="text-3xl text-[#4a5c4c]">&#9776;</span>
               </button>
               <section className={`relative hidden xl:flex items-center gap-9`}>
-                <p className="text-slate-500 font-medium cursor-pointer">
+                <p className="text-dark-secondary font-medium cursor-pointer">
                   Kategori
                 </p>
                 {isLogin ? (
@@ -52,9 +44,9 @@ const Navbar = () => {
                       >
                         {header.dropdown.map((item, index) => (
                           <li
-                            className={`text-slate-500 font-medium px-3 py-4 hover:bg-slate-100 border-b ${
+                            className={`text-dark-secondary font-medium px-3 py-4 hover:bg-slate-100 border-b ${
                               index === header.dropdown.length - 1 &&
-                              "text-error-200 gap-1 flex"
+                              "text-error-default hover:text-error-hover active:text-error-pressed gap-1 flex"
                             }`}
                             key={index}
                             onClick={
@@ -93,14 +85,14 @@ const Navbar = () => {
                 <section
                   className={`absolute xl:hidden top-[4.8rem] left-0 bg-white w-full flex flex-col rounded-b px-1 z-10`}
                 >
-                  <p className="text-slate-500 font-medium cursor-pointer px-3 py-4 border-b">
+                  <p className="text-dark-secondary font-medium cursor-pointer px-3 py-4 border-b">
                     Kategori
                   </p>
                   {isLogin ? (
                     <ul className={` cursor-pointer`}>
                       {header.dropdown.map((item, index) => (
                         <li
-                          className={`text-slate-500 font-medium px-3 py-4 hover:bg-slate-100 border-b ${
+                          className={`text-dark-secondary font-medium px-3 py-4 hover:bg-slate-100 border-b ${
                             index === header.dropdown.length - 1 &&
                             "text-error-200 gap-1 flex"
                           }`}

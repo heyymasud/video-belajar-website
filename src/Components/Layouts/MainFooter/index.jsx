@@ -34,7 +34,7 @@ const MainFooter = () => {
               }`}
             >
               {footer.kategori.map((item, index) => (
-                <li className="text-slate-500 font-medium" key={index}>
+                <li className="text-slate-500 font-medium cursor-pointer" key={index}>
                   {item}
                 </li>
               ))}
@@ -53,7 +53,7 @@ const MainFooter = () => {
                 dropDown2 ? "flex" : "hidden"
               }`}>
               {footer.perusahaan.map((item, index) => (
-                <li className="text-slate-500 font-medium" key={index}>
+                <li className="text-slate-500 font-medium cursor-pointer" key={index}>
                   {item}
                 </li>
               ))}
@@ -72,7 +72,7 @@ const MainFooter = () => {
                 dropDown3 ? "flex" : "hidden"
               }`}>
               {footer.komunitas.map((item, index) => (
-                <li className="text-slate-500 font-medium" key={index}>
+                <li className="text-slate-500 font-medium cursor-pointer" key={index}>
                   {item}
                 </li>
               ))}

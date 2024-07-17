@@ -75,9 +75,9 @@ const LoginPage = () => {
               </p>
             )}
             <section className="flex flex-col gap-4">
-              <Button className="bg-primary-500 text-white">Masuk</Button>
+              <Button className="bg-primary-500 hover:bg-green-500 text-white">Masuk</Button>
               <Button
-                className="bg-primary-100 text-primary-500"
+                className="bg-primary-100 hover:bg-[#e2fcd9] text-primary-500"
                 type="button"
                 onClick={() => navigate("/register")}
               >

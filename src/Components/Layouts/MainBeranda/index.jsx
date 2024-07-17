@@ -7,7 +7,7 @@ import NavbarBeranda from "../../Elements/NavbarBeranda/index.jsx";
 const MainBeranda = () => {
   const { heroHeader, mainHeader, mainCard, heroFooter } = main;
   const [activeIndex, setActiveIndex] = useState(0);
-
+ 
   const handleNavActive = (index) => {
     setActiveIndex(index);
   };
@@ -20,12 +20,12 @@ const MainBeranda = () => {
         button={heroHeader.button}
         isFooter={false}
       />
-      <main className="flex flex-col gap-6 xl:gap-8">
+      <main className="flex flex-col text-dark-primary gap-6 xl:gap-8">
         <header className="flex flex-col gap-[10px]">
           <h3 className="font-pop text-2xl xl:text-4xl font-semibold">
             {mainHeader.title}
           </h3>
-          <p className="text-slate-500 text-sm xl:text-base font-medium">
+          <p className="text-dark-secondary text-sm xl:text-base font-medium">
             {mainHeader.subtitle}
           </p>
         </header>

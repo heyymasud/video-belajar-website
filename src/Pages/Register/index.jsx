@@ -123,13 +123,13 @@ const RegisterPage = () => {
               errors={errors}
             />
             <section className="flex flex-col gap-4">
-              <Button className="bg-primary-500 text-white" type="submit">
+              <Button className="bg-primary-500 hover:bg-green-500 text-white" type="submit">
                 Daftar
               </Button>
               <Button
                 type="button"
                 onClick={() => navigate("/login")}
-                className="bg-primary-100 text-primary-500"
+                className="bg-primary-100 hover:bg-[#e2fcd9] text-primary-500"
               >
                 Masuk
               </Button>
