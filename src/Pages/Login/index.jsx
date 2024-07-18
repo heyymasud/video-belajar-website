@@ -22,15 +22,16 @@ const LoginPage = () => {
   const [error, setError] = useState(false);
 
   const onSubmit = (data) => {
-    const userData = JSON.parse(localStorage.getItem("user"));
+    const userData = JSON.parse(localStorage.getItem("users") || "[]");
     if (
       userData &&
-      data.email === userData.email &&
-      data.password === userData.password
+      userData.find(
+        (user) => user.email === data.email && user.password === data.password
+      )
     ) {
       const isLogin = JSON.stringify({
         isLogin: true,
-        name: userData.username,
+        name: userData.find((user) => user.email === data.email).username,
       });
       localStorage.setItem("isLogin", isLogin);
       setIsModalOpen(true);
@@ -41,7 +42,7 @@ const LoginPage = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    navigate("/");
+    navigate("/video-belajar-website/");
   };
 
   return (
@@ -75,11 +76,13 @@ const LoginPage = () => {
               </p>
             )}
             <section className="flex flex-col gap-4">
-              <Button className="bg-primary-500 hover:bg-green-500 text-white">Masuk</Button>
+              <Button className="bg-primary-500 hover:bg-green-500 text-white">
+                Masuk
+              </Button>
               <Button
                 className="bg-primary-100 hover:bg-[#e2fcd9] text-primary-500"
                 type="button"
-                onClick={() => navigate("/register")}
+                onClick={() => navigate("/video-belajar-website/register")}
               >
                 Daftar
               </Button>

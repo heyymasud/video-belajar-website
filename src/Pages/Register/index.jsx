@@ -37,15 +37,20 @@ const RegisterPage = () => {
     // Menghapus data yang tidak dibutuhkan
     delete finalData["confirm-password"];
     delete finalData["country"];
-    // Menyimpan data ke local storage
-    localStorage.setItem("user", JSON.stringify(finalData));
-    // Menampilkan modal
-    setIsModalOpen(true);
+
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
+    if (users.find(user => user.email === finalData.email)) {
+      alert("Email sudah terdaftar");
+    } else {
+      users.push(finalData);
+      localStorage.setItem("users", JSON.stringify(users));
+      setIsModalOpen(true);
+    }
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    navigate("/login");
+    navigate("/video-belajar-website/login");
   };
 
   return (
@@ -128,7 +133,7 @@ const RegisterPage = () => {
               </Button>
               <Button
                 type="button"
-                onClick={() => navigate("/login")}
+                onClick={() => navigate("/video-belajar-website/login")}
                 className="bg-primary-100 hover:bg-[#e2fcd9] text-primary-500"
               >
                 Masuk
