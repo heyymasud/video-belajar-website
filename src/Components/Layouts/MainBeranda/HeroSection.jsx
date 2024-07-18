@@ -1,5 +1,5 @@
 import Button from "../../Elements/Button";
-import InputEmail from "../../Elements/inputEmail";
+import InputEmail from "./InputEmail";
 
 const HeroSection = ({
   image,

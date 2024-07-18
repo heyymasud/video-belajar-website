@@ -1,8 +1,8 @@
 import { useState } from "react";
 import main from "../../../Data/mainData.js";
-import HeroSection from "../../Fragments/HeroSection/index.jsx";
-import Card from "../../Fragments/Card/index.jsx";
-import NavbarBeranda from "../../Elements/NavbarBeranda/index.jsx";
+import HeroSection from "./HeroSection.jsx";
+import Card from "./Card.jsx";
+import NavbarBeranda from "./NavbarBeranda.jsx";
 
 const MainBeranda = () => {
   const { heroHeader, mainHeader, mainCard, heroFooter } = main;

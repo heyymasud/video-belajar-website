@@ -1,4 +1,4 @@
-import Button from "../Button";
+import Button from "../../Elements/Button";
 
 const InputEmail = ({buttonText}) => {
   return (
