@@ -34,7 +34,7 @@ const MainBeranda = () => {
         activeIndex={activeIndex}
         handleNavActive={handleNavActive}
         />
-        <main className="w-full flex flex-wrap gap-5 xl:gap-6">
+        <main className="w-full flex flex-wrap gap-5 xl:gap-5 justify-center">
           {mainCard.map((item, index) => (
             <Card
               key={index}
