@@ -50,7 +50,7 @@ const RegisterPage = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    navigate("/video-belajar-website/login");
+    navigate("/login");
   };
 
   return (
@@ -133,7 +133,7 @@ const RegisterPage = () => {
               </Button>
               <Button
                 type="button"
-                onClick={() => navigate("/video-belajar-website/login")}
+                onClick={() => navigate("/login")}
                 className="bg-primary-100 hover:bg-[#e2fcd9] text-primary-500"
               >
                 Masuk

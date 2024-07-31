@@ -7,9 +7,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="video-belajar-website/" element={<Beranda />} />
-        <Route path="video-belajar-website/login" element={<LoginPage />} />
-        <Route path="video-belajar-website/register" element={<RegisterPage />} />
+        <Route path="/" element={<Beranda />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </div>
   );
