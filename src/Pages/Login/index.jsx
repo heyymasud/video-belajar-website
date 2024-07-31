@@ -82,7 +82,7 @@ const LoginPage = () => {
               <Button
                 className="bg-primary-100 hover:bg-[#e2fcd9] text-primary-500"
                 type="button"
-                onClick={() => navigate("/register")}
+                onClick={() => navigate("/video-belajar-website/register")}
               >
                 Daftar
               </Button>
