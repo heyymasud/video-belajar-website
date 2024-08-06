@@ -6,11 +6,13 @@ import NavbarBeranda from "./NavbarBeranda.jsx";
 import Cart from "../../Fragments/Cart/index.jsx";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../redux/slices/cartSlices.js";
+import { useSelector } from "react-redux";
 
 const MainBeranda = () => {
   const { heroHeader, mainHeader, mainCard, heroFooter } = main;
   const [activeIndex, setActiveIndex] = useState(0);
   const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
  
   const handleNavActive = (index) => {
@@ -18,7 +20,7 @@ const MainBeranda = () => {
   };
   return (
     <main className="h-auto w-full flex flex-col px-5 xl:px-[120px]">
-      <Cart />
+      {isAuthenticated.isLogin && <Cart />}
 
       <HeroSection
         image={heroHeader.image}

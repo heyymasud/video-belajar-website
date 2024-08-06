@@ -1,10 +1,8 @@
 import { FaCartShopping } from "react-icons/fa6";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getTotals, removeFromCart, editQty, clearCart } from "../../../redux/slices/cartSlices";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MdDelete, MdEdit, MdOutlineClear, MdSave } from "react-icons/md";
-import { useState } from "react";
 
 const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
