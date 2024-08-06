@@ -20,6 +20,7 @@ const main = {
   },
   mainCard: [
     {
+      id: 1,
       cardTitle: 'Big 4 Auditor Financial Analyst',
       cardDescription: 'Mulai transformasi dengan infrastruktur profesional, harga yang terjangkau, dan kualitas yang terbaik.',
       cardImage: './img/card1.jpg',
@@ -29,8 +30,10 @@ const main = {
       trainerCompany: 'Gojek',
       cardRating: '3.5 (86)',
       cardPrice: 'Rp 300K',
+      cardPriceNum: 300000,
     },
     {
+      id: 2,
       cardTitle: 'Big 4 Auditor Financial Analyst',
       cardDescription: 'Mulai transformasi dengan infrastruktur profesional, harga yang terjangkau, dan kualitas yang terbaik.',
       cardImage: './img/card2.jpg',
@@ -40,8 +43,10 @@ const main = {
       trainerCompany: 'Gojek',
       cardRating: '3.5 (86)',
       cardPrice: 'Rp 300K',
+      cardPriceNum: 300000,
     },
     {
+      id: 3,
       cardTitle: 'Big 4 Auditor Financial Analyst',
       cardDescription: 'Mulai transformasi dengan infrastruktur profesional, harga yang terjangkau, dan kualitas yang terbaik.',
       cardImage: './img/card3.jpg',
@@ -51,8 +56,10 @@ const main = {
       trainerCompany: 'Gojek',
       cardRating: '3.5 (86)',
       cardPrice: 'Rp 300K',
+      cardPriceNum: 300000,
     },
     {
+      id: 4,
       cardTitle: 'Big 4 Auditor Financial Analyst',
       cardDescription: 'Mulai transformasi dengan infrastruktur profesional, harga yang terjangkau, dan kualitas yang terbaik.',
       cardImage: './img/card4.jpg',
@@ -62,8 +69,10 @@ const main = {
       trainerCompany: 'Gojek',
       cardRating: '3.5 (86)',
       cardPrice: 'Rp 300K',
+      cardPriceNum: 300000,
     },
     {
+      id: 5,
       cardTitle: 'Big 4 Auditor Financial Analyst',
       cardDescription: 'Mulai transformasi dengan infrastruktur profesional, harga yang terjangkau, dan kualitas yang terbaik.',
       cardImage: './img/card5.jpg',
@@ -73,8 +82,10 @@ const main = {
       trainerCompany: 'Gojek',
       cardRating: '3.5 (86)',
       cardPrice: 'Rp 300K',
+      cardPriceNum: 300000,
     },
     {
+      id: 6,
       cardTitle: 'Big 4 Auditor Financial Analyst',
       cardDescription: 'Mulai transformasi dengan infrastruktur profesional, harga yang terjangkau, dan kualitas yang terbaik.',
       cardImage: './img/card6.jpg',
@@ -84,8 +95,10 @@ const main = {
       trainerCompany: 'Gojek',
       cardRating: '3.5 (86)',
       cardPrice: 'Rp 300K',
+      cardPriceNum: 300000,
     },
     {
+      id: 7,
       cardTitle: 'Big 4 Auditor Financial Analyst',
       cardDescription: 'Mulai transformasi dengan infrastruktur profesional, harga yang terjangkau, dan kualitas yang terbaik.',
       cardImage: './img/card7.jpg',
@@ -95,8 +108,10 @@ const main = {
       trainerCompany: 'Gojek',
       cardRating: '3.5 (86)',
       cardPrice: 'Rp 300K',
+      cardPriceNum: 300000,
     },
     {
+      id: 8,
       cardTitle: 'Big 4 Auditor Financial Analyst',
       cardDescription: 'Mulai transformasi dengan infrastruktur profesional, harga yang terjangkau, dan kualitas yang terbaik.',
       cardImage: './img/card8.jpg',
@@ -106,8 +121,10 @@ const main = {
       trainerCompany: 'Gojek',
       cardRating: '3.5 (86)',
       cardPrice: 'Rp 300K',
+      cardPriceNum: 300000,
     },
     {
+      id: 9,
       cardTitle: 'Big 4 Auditor Financial Analyst',
       cardDescription: 'Mulai transformasi dengan infrastruktur profesional, harga yang terjangkau, dan kualitas yang terbaik.',
       cardImage: './img/card9.jpg',
@@ -117,6 +134,7 @@ const main = {
       trainerCompany: 'Gojek',
       cardRating: '3.5 (86)',
       cardPrice: 'Rp 300K',
+      cardPriceNum: 300000,
     }
   ],
   heroFooter: {

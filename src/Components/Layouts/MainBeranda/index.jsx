@@ -3,16 +3,23 @@ import main from "../../../Data/mainData.js";
 import HeroSection from "./HeroSection.jsx";
 import Card from "./Card.jsx";
 import NavbarBeranda from "./NavbarBeranda.jsx";
+import Cart from "../../Fragments/Cart/index.jsx";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../redux/slices/cartSlices.js";
 
 const MainBeranda = () => {
   const { heroHeader, mainHeader, mainCard, heroFooter } = main;
   const [activeIndex, setActiveIndex] = useState(0);
+  const dispatch = useDispatch();
+
  
   const handleNavActive = (index) => {
     setActiveIndex(index);
   };
   return (
     <main className="h-auto w-full flex flex-col px-5 xl:px-[120px]">
+      <Cart />
+
       <HeroSection
         image={heroHeader.image}
         title={heroHeader.title}
@@ -47,6 +54,7 @@ const MainBeranda = () => {
               trainerCompany={item.trainerCompany}
               cardRating={item.cardRating}
               cardPrice={item.cardPrice}
+              onClick={() => dispatch(addToCart({...item}))}
             />
           ))}
         </main>

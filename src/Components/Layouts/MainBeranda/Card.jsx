@@ -1,8 +1,9 @@
 
-const Card = ({cardImage, cardTitle, cardDescription, trainerImage, trainer, trainerJob, trainerCompany, cardRating, cardPrice}) => {
+const Card = ({onClick, cardImage, cardTitle, cardDescription, trainerImage, trainer, trainerJob, trainerCompany, cardRating, cardPrice}) => {
   return (
     <div
       className="cursor-pointer w-full xl:w-[32%] h-auto bg-light-primary hover:bg-slate-50 rounded-xl border border-[#3A35411F] p-4 xl:p-5 flex flex-col gap-2 xl:gap-4"
+      onClick={onClick}
     >
       <section className="flex flex-row xl:flex-col gap-3 xl:gap-4 items-center xl:items-stretch">
         <header>
