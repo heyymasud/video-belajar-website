@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import ModalAuth from "../../Components/Modal/ModalAuth";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/slices/authSlices";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -20,24 +22,34 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm({});
   const [error, setError] = useState(false);
-
+  const dispatch = useDispatch();
   const onSubmit = (data) => {
     const userData = JSON.parse(localStorage.getItem("users") || "[]");
     if (
       userData &&
       userData.find(
-        (user) => user.email === data.email && user.password === data.password
-      )
-    ) {
-      const isLogin = JSON.stringify({
-        isLogin: true,
-        name: userData.find((user) => user.email === data.email).username,
-      });
-      localStorage.setItem("isLogin", isLogin);
-      setIsModalOpen(true);
-    } else {
-      setError(true);
-    }
+        (user) => user.email === data.email && user.password === data.password)) {
+          dispatch(login(data));
+          setIsModalOpen(true);
+          setError(false);
+        } else {
+          setError(true);
+        }
+
+    // const userData = JSON.parse(localStorage.getItem("users") || "[]");
+    // if (
+    //   userData &&
+    //   userData.find(
+    //     (user) => user.email === data.email && user.password === data.password
+    //   )
+    // ) {
+    //   const isLogin = JSON.stringify({
+    //     isLogin: true,
+    //     name: userData.find((user) => user.email === data.email).username,
+    //   });
+    //   localStorage.setItem("isLogin", isLogin);
+
+    // } else {
   };
 
   const handleCloseModal = () => {
