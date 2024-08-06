@@ -56,7 +56,7 @@ const MainBeranda = () => {
               trainerCompany={item.trainerCompany}
               cardRating={item.cardRating}
               cardPrice={item.cardPrice}
-              onClick={() => dispatch(addToCart({...item}))}
+              onClick={() => {isAuthenticated.isLogin && dispatch(addToCart({...item}))}}
             />
           ))}
         </main>
