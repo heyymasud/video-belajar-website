@@ -7,13 +7,34 @@ import Cart from "../../Fragments/Cart/index.jsx";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../redux/slices/cartSlices.js";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../Data/firebase.js";
+import { getCourses } from "../../../redux/slices/courseSlices.js";
 
 const MainBeranda = () => {
-  const { heroHeader, mainHeader, mainCard, heroFooter } = main;
+  const { heroHeader, mainHeader, heroFooter } = main;
   const [activeIndex, setActiveIndex] = useState(0);
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.auth);
+  const { courses } = useSelector((state) => state.courses);
 
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "courses"));
+        const courses = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        dispatch(getCourses(courses));
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
+    fetchCourses();
+  }, [dispatch])
+  
  
   const handleNavActive = (index) => {
     setActiveIndex(index);
@@ -44,7 +65,7 @@ const MainBeranda = () => {
         handleNavActive={handleNavActive}
         />
         <main className="w-full flex flex-wrap gap-5 xl:gap-5 justify-center">
-          {mainCard.map((item, index) => (
+          {courses.map((item, index) => (
             <Card
               key={index}
               cardImage={item.cardImage}

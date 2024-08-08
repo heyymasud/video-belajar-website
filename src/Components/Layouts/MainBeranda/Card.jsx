@@ -34,7 +34,7 @@ const Card = ({onClick, cardImage, cardTitle, cardDescription, trainerImage, tra
               <h3 className="text-sm xl:text-lg font-medium">{trainer}</h3>
               <p className=" text-dark-secondary text-xs xl:text-base font-normal xl:font-medium">
                 {trainerJob}
-                <span className="hidden xl:inline">di </span>
+                <span className="hidden xl:inline"> di </span>
                 <span className="hidden xl:inline font-bold">
                   {trainerCompany}
                 </span>
