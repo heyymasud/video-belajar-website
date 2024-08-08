@@ -15,11 +15,16 @@ import InputSelect from "../../Components/Elements/InputSelect/index.jsx";
 import { createUserWithEmailAndPassword, fetchSignInMethodsForEmail } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../Data/firebase.js";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { closeModal, openModal } from "../../redux/slices/authSlices.js";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
   const country = authData[0].country;
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const {modalOpen} = useSelector((state) => state.auth);
+  const [isNormalRegister, setIsNormalRegister] = useState(false);
   // Handle form events
   const {
     register,
@@ -45,7 +50,8 @@ const RegisterPage = () => {
       } else {
         const userCredential = await createUserWithEmailAndPassword(auth, finalData.email, finalData.password);
         await setDoc(doc(db, "users", userCredential.user.uid), finalData);
-        setIsModalOpen(true);
+        setIsNormalRegister(true);
+        dispatch(openModal());
       }
     } catch (error) {
       console.error("Error pada saat regsitrasi: ", error);
@@ -54,8 +60,8 @@ const RegisterPage = () => {
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
-    navigate("/login");
+    dispatch(closeModal());
+    {isNormalRegister ? navigate("/login") : navigate("/")}
   };
 
   return (
@@ -148,9 +154,11 @@ const RegisterPage = () => {
         </Form>
       </Main>
       <ModalAuth
-        textH="Registrasi Berhasil"
-        textP="Akun Anda telah berhasil dibuat."
-        isOpen={isModalOpen}
+        textH={isNormalRegister ? `Registrasi Berhasil` : `Masuk dengan google berhasil`}
+        textP={isNormalRegister ? `Akun Anda telah berhasil dibuat.` : `Selamat datang ${
+          JSON.parse(localStorage.getItem("authData"))?.name
+        }.`}
+        isOpen={modalOpen}
         onClose={handleCloseModal}
       />
     </div>

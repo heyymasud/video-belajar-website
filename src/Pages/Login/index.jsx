@@ -22,6 +22,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   // const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+  const [isNormalLogin, setIsNormalLogin] = useState(false);
   const { modalOpen } = useSelector((state) => state.auth);
   
   const {
@@ -43,10 +44,11 @@ const LoginPage = () => {
       );
       const user = {
         ...data,
-        username: users.find((user) => user.email === data.email).username,
+        name: users.find((user) => user.email === data.email).username,
         token: userCredential.user.accessToken,
       };
       dispatch(login(user));
+      setIsNormalLogin(true);
       setError(false);
     } catch (error) {
       const errorCode = error.code;
@@ -109,7 +111,7 @@ const LoginPage = () => {
         <ModalAuth
           isOpen={modalOpen}
           onClose={handleCloseModal}
-          textH={`Login Berhasil`}
+          textH={isNormalLogin ? `Login Berhasil` : `Login dengan google berhasil`}
           textP={`Selamat datang kembali ${
             JSON.parse(localStorage.getItem("authData"))?.name
           }`}

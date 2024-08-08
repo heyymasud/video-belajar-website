@@ -12,7 +12,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, { payload }) => {
-      const isLogin = JSON.stringify({ isLogin: true, name: payload.username, token: payload.token });
+      const isLogin = JSON.stringify({ isLogin: true, name: payload.name, token: payload.token });
       state.isAuthenticated = JSON.parse(isLogin);
       localStorage.setItem("authData", isLogin);
       state.modalOpen = true;
@@ -34,6 +34,9 @@ const authSlice = createSlice({
     closeModal: (state) => {
       state.modalOpen = false;
     },
+    openModal: (state) => {
+      state.modalOpen = true;
+    }
   },
   // extraReducers: (builder) => {
   //   builder
@@ -55,5 +58,5 @@ const authSlice = createSlice({
   // },
 });
 
-export const { login, loginGoogle, logout, closeModal } = authSlice.actions;
+export const { login, loginGoogle, logout, closeModal, openModal } = authSlice.actions;
 export default authSlice.reducer;
