@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isAuthenticated: JSON.parse(localStorage.getItem("isLogin")) || { isLogin: false },
+  isAuthenticated: JSON.parse(localStorage.getItem("authData")) || false,
+  modalOpen: false,
+  loading: false,
+  error: null,
 };
 
 const authSlice = createSlice({
@@ -9,20 +12,48 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, { payload }) => {
-      const userData = JSON.parse(localStorage.getItem("users") || "[]");
+      const isLogin = JSON.stringify({ isLogin: true, name: payload.username, token: payload.token });
+      state.isAuthenticated = JSON.parse(isLogin);
+      localStorage.setItem("authData", isLogin);
+      state.modalOpen = true;
+    },
+    loginGoogle: (state, { payload }) => {
       const isLogin = JSON.stringify({
         isLogin: true,
-        name: userData.find((user) => user.email === payload.email).username,
+        name: payload.name,
+        token: payload.token,
       });
-      localStorage.setItem("isLogin", isLogin);
-      state.isAuthenticated = { isLogin: true };
+      state.isAuthenticated = JSON.parse(isLogin);
+      localStorage.setItem("authData", isLogin);
+      state.modalOpen = true;
     },
     logout: (state) => {
-      localStorage.removeItem("isLogin");
-      state.isAuthenticated = { isLogin: false };
+      localStorage.removeItem("authData");
+      state.isAuthenticated = false;
+    },
+    closeModal: (state) => {
+      state.modalOpen = false;
     },
   },
+  // extraReducers: (builder) => {
+  //   builder
+  //     .addCase(fetchUserByEmail.pending, (state) => {
+  //       state.loading = true;
+  //       state.error = null;
+  //     })
+  //     .addCase(fetchUserByEmail.fulfilled, (state, { payload }) => {
+  //       state.loading = false;
+  //       const isLogin = true;
+  //       localStorage.setItem("isLogin", isLogin);
+  //       state.isAuthenticated = true;
+  //       state.user = payload;
+  //     })
+  //     .addCase(fetchUserByEmail.rejected, (state, { payload }) => {
+  //       state.loading = false;
+  //       state.error = payload;
+  //     });
+  // },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, loginGoogle, logout, closeModal } = authSlice.actions;
 export default authSlice.reducer;

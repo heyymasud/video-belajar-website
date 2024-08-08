@@ -1,4 +1,4 @@
-const auth = [
+const authData = [
   {
     country: [
       {
@@ -34,4 +34,4 @@ const auth = [
   },
 ];
 
-export default auth;
+export default authData;

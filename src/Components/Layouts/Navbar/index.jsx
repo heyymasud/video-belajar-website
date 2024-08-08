@@ -23,8 +23,8 @@ const Navbar = ({ isLogin, handleLogout }) => {
     <header className="w-full h-auto">
       <nav className="relative w-full h-auto bg-white border-b xl:border-none shadow-lg xl:shadow px-6 xl:px-[120px] py-4 xl:py-3 flex justify-between items-center">
         <Logo src={header.logo} alt="logo" />
-        {location.pathname !== "/video-belajar-website/login" &&
-          location.pathname !== "/video-belajar-website/register" && (
+        {location.pathname !== "/login" &&
+          location.pathname !== "/register" && (
             <>
               <BurgerButton onClick={handleBurgerClick} />
               <NavItems

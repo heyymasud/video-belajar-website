@@ -10,50 +10,54 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import ModalAuth from "../../Components/Modal/ModalAuth";
 import { useDispatch } from "react-redux";
-import { login } from "../../redux/slices/authSlices";
+import { closeModal, login } from "../../redux/slices/authSlices";
+import {
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth, db } from "../../Data/firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { useSelector } from "react-redux";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { modalOpen } = useSelector((state) => state.auth);
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({});
   const [error, setError] = useState(false);
-  const dispatch = useDispatch();
-  const onSubmit = (data) => {
-    const userData = JSON.parse(localStorage.getItem("users") || "[]");
-    if (
-      userData &&
-      userData.find(
-        (user) => user.email === data.email && user.password === data.password)) {
-          dispatch(login(data));
-          setIsModalOpen(true);
-          setError(false);
-        } else {
-          setError(true);
-        }
 
-    // const userData = JSON.parse(localStorage.getItem("users") || "[]");
-    // if (
-    //   userData &&
-    //   userData.find(
-    //     (user) => user.email === data.email && user.password === data.password
-    //   )
-    // ) {
-    //   const isLogin = JSON.stringify({
-    //     isLogin: true,
-    //     name: userData.find((user) => user.email === data.email).username,
-    //   });
-    //   localStorage.setItem("isLogin", isLogin);
+  const onSubmit = async (data) => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "users"));
+      const users = querySnapshot.docs.map((doc) => doc.data());
 
-    // } else {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      const user = {
+        ...data,
+        username: users.find((user) => user.email === data.email).username,
+        token: userCredential.user.accessToken,
+      };
+      dispatch(login(user));
+      setError(false);
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode || errorMessage);
+      setError(true);
+    }
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
+    dispatch(closeModal());
     navigate("/");
   };
 
@@ -103,11 +107,11 @@ const LoginPage = () => {
         </Form>
 
         <ModalAuth
-          isOpen={isModalOpen}
+          isOpen={modalOpen}
           onClose={handleCloseModal}
           textH={`Login Berhasil`}
           textP={`Selamat datang kembali ${
-            JSON.parse(localStorage.getItem("isLogin"))?.name
+            JSON.parse(localStorage.getItem("authData"))?.name
           }`}
         />
       </Main>

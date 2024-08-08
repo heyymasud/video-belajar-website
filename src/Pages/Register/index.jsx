@@ -7,15 +7,18 @@ import InputFieldPassword from "../../Components/Elements/InputField/InputFieldP
 import InputFieldPhone from "../../Components/Elements/InputField/InputFieldPhone";
 import Button from "../../Components/Elements/Button";
 import { useForm } from "react-hook-form";
-import auth from "../../Data/authData.js";
+import authData from "../../Data/authData.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ModalAuth from "../../Components/Modal/ModalAuth/index.jsx";
 import InputSelect from "../../Components/Elements/InputSelect/index.jsx";
+import { createUserWithEmailAndPassword, fetchSignInMethodsForEmail } from "firebase/auth";
+import { setDoc, doc } from "firebase/firestore";
+import { auth, db } from "../../Data/firebase.js";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-  const country = auth[0].country;
+  const country = authData[0].country;
   const [isModalOpen, setIsModalOpen] = useState(false);
   // Handle form events
   const {
@@ -27,24 +30,26 @@ const RegisterPage = () => {
     mode: "onChange",
   });
   // Handle Submit
-  const onSubmit = (data) => {
-    // Menggabung kode dan nomor telpon
-    const fullPhone = data.country + data.phone;
-    // Mengambil nama negara
-    const countryName = country.find((c) => c.code === data.country).country;
-    // Menggabungkan semua data
-    const finalData = { ...data, phone: fullPhone, countryName };
-    // Menghapus data yang tidak dibutuhkan
-    delete finalData["confirm-password"];
-    delete finalData["country"];
+  const onSubmit = async (data) => {
+    try {
+      const fullPhone = data.country + data.phone;
+      const countryName = country.find((c) => c.code === data.country).country;
+      const finalData = { ...data, phone: fullPhone, countryName };
+      delete finalData["confirm-password"];
+      delete finalData["country"];
+  
+      const isEmailExist = await fetchSignInMethodsForEmail(auth, finalData.email);
 
-    let users = JSON.parse(localStorage.getItem("users") || "[]");
-    if (users.find(user => user.email === finalData.email)) {
-      alert("Email sudah terdaftar");
-    } else {
-      users.push(finalData);
-      localStorage.setItem("users", JSON.stringify(users));
-      setIsModalOpen(true);
+      if (isEmailExist.length > 0) {
+        throw new Error("Email sudah terdaftar");
+      } else {
+        const userCredential = await createUserWithEmailAndPassword(auth, finalData.email, finalData.password);
+        await setDoc(doc(db, "users", userCredential.user.uid), finalData);
+        setIsModalOpen(true);
+      }
+    } catch (error) {
+      console.error("Error pada saat regsitrasi: ", error);
+      alert(error.message);
     }
   };
 
