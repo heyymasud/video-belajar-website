@@ -1,18 +1,35 @@
 import { useState } from "react";
 
-const Card = ({onClick, cardImage, cardTitle, cardDescription, trainerImage, trainer, trainerJob, trainerCompany, cardRating, cardPrice}) => {
+const Card = ({
+  onClick,
+  cardImage,
+  cardTitle,
+  cardDescription,
+  trainerImage,
+  trainer,
+  trainerJob,
+  trainerCompany,
+  cardRating,
+  cardPrice,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div
-      className="cursor-pointer relative w-full xl:w-[32%] h-auto bg-light-primary hover:bg-slate-50 rounded-xl border border-[#3A35411F] p-4 xl:p-5 flex flex-col gap-2 xl:gap-4"
-      onClick={onClick} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
+      className={`cursor-pointer relative w-full xl:w-[32%] h-auto bg-light-primary hover:bg-slate-50 rounded-xl border border-[#3A35411F] p-4 xl:p-5 flex flex-col gap-2 xl:gap-4 ${isHovered && "shadow-xl"}`}
+      onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {isHovered && (
-        <div className="absolute w-full h-full bg-gradient-to-t from-[#ffbd3a9a] to-[#ffbd3aee]  top-0 left-0 rounded-xl">
-          <p className="text-white h-full flex items-center justify-center md:text-4xl text-sm font-extrabold">Add to cart</p>
-        </div>
-      )}
-      <section className="flex flex-row xl:flex-col gap-3 xl:gap-4 items-center xl:items-stretch">
+      <div
+        className={`absolute w-full h-full bg-gradient-to-b from-[#ffbd3ab4] to-[#ffbd3af8] top-0 left-0 rounded-xl transition-opacity duration-200 ease-in-out ${
+          isHovered ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <p className="text-white h-full flex items-end pb-10 justify-center md:text-4xl text-sm font-extrabold">
+          Add to cart
+        </p>
+      </div>
+      <section className={`flex flex-row xl:flex-col gap-3 xl:gap-4 items-center xl:items-stretch`}>
         <header>
           <img
             src={cardImage}
