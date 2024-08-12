@@ -12,7 +12,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, { payload }) => {
-      const isLogin = JSON.stringify({ isLogin: true, name: payload.name, token: payload.token });
+      const isLogin = JSON.stringify({ isLogin: true, name: payload.name, token: payload.token, userId: payload.userId });
       state.isAuthenticated = JSON.parse(isLogin);
       localStorage.setItem("authData", isLogin);
       state.modalOpen = true;

@@ -5,40 +5,38 @@ import Card from "./Card.jsx";
 import NavbarBeranda from "./NavbarBeranda.jsx";
 import Cart from "../../Fragments/Cart/index.jsx";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../../redux/slices/cartSlices.js";
+import { addItemToCart, fetchCart } from "../../../redux/slices/cartSlices.js";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../../Data/firebase.js";
-import { getCourses } from "../../../redux/slices/courseSlices.js";
+import { fetchCourses } from "../../../redux/slices/courseSlices.js";
+
 
 const MainBeranda = () => {
-  const { heroHeader, mainHeader, heroFooter } = main;
-  const [activeIndex, setActiveIndex] = useState(0);
   const dispatch = useDispatch();
+  const { heroHeader, mainHeader, heroFooter } = main;
   const { isAuthenticated } = useSelector((state) => state.auth);
-  const { courses } = useSelector((state) => state.courses);
+  const { entities, status: coursesStatus } = useSelector((state) => state.courses);
+  const courses = Object.values(entities);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "courses"));
-        const courses = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        dispatch(getCourses(courses));
-      } catch (error) {
-        console.error("Error fetching courses:", error);
-      }
-    };
-    fetchCourses();
-  }, [dispatch])
-  
+    if (coursesStatus === "idle") {
+      dispatch(fetchCourses());
+    }
+    if (isAuthenticated) {
+      dispatch(fetchCart(isAuthenticated.userId));
+    }
+  }, [coursesStatus, isAuthenticated, dispatch]);
  
   const handleNavActive = (index) => {
     setActiveIndex(index);
   };
+
+  const handleAddToCart = (courseId) => {
+    if (isAuthenticated) {
+      dispatch(addItemToCart({ userId: isAuthenticated.userId, courseId }));
+    }
+  }
   return (
     <main className="h-auto w-full flex flex-col px-5 xl:px-[120px]">
       {isAuthenticated.isLogin && <Cart />}
@@ -65,9 +63,9 @@ const MainBeranda = () => {
         handleNavActive={handleNavActive}
         />
         <main className="w-full flex flex-wrap gap-5 xl:gap-5 justify-center">
-          {courses.map((item, index) => (
+          {courses.map((item) => (
             <Card
-              key={index}
+              key={item.id}
               cardImage={item.cardImage}
               cardTitle={item.cardTitle}
               cardDescription={item.cardDescription}
@@ -77,7 +75,7 @@ const MainBeranda = () => {
               trainerCompany={item.trainerCompany}
               cardRating={item.cardRating}
               cardPrice={item.cardPrice}
-              onClick={() => {isAuthenticated.isLogin && dispatch(addToCart({...item}))}}
+              onClick={() => handleAddToCart(item.ids)}
             />
           ))}
         </main>

@@ -46,6 +46,7 @@ const LoginPage = () => {
         ...data,
         name: users.find((user) => user.email === data.email).username,
         token: userCredential.user.accessToken,
+        userId: userCredential.user.uid,
       };
       dispatch(login(user));
       setIsNormalLogin(true);

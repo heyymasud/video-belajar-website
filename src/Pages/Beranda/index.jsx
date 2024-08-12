@@ -5,7 +5,6 @@ import ModalAuth from "../../Components/Modal/ModalAuth";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { closeModal, logout, openModal } from "../../redux/slices/authSlices";
-import { clearCart } from "../../redux/slices/cartSlices";
 
 const Beranda = () => {
   const userAuth = useSelector((state) => state.auth);
@@ -13,7 +12,6 @@ const Beranda = () => {
   const {modalOpen} = useSelector((state) => state.auth);
   const handleLogout = () => {
     dispatch(logout());
-    dispatch(clearCart());
     dispatch(openModal());
   };
 

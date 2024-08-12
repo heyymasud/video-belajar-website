@@ -17,6 +17,7 @@ const Form = (props) => {
           const user = {
             name: result.user.displayName,
             token: token,
+            userId: result.user.uid,
           };
           dispatch(loginGoogle(user));
 

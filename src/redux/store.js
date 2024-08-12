@@ -7,7 +7,7 @@ const store = configureStore({
   reducer: {
     cart: cartSlices,
     auth: authSlices,
-    courses: courseSlices,
+    courses: courseSlices
   },
 });
 console.log("oncreate store", store.getState());
