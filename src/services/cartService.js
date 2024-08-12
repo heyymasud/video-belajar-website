@@ -1,17 +1,28 @@
 import api from "./api";
+import {v4 as uuidv4} from 'uuid';
 
 export const getCart = async (userId) => {
   try {
+    if (!userId) {
+      throw new Error("User ID is required");
+    }
     const response = await api.get(`/cart?userId=${userId}`);
     return response.data[0];
   } catch (error) {
-    console.error("Error fetching cart:", error);
-    throw error;
+    if (error.response && error.response.status === 404) {
+      return null;
+    } else {
+      console.error("Error fetching cart:", error);
+      throw error;
+    }
   }
 };
 
 export const addToCart = async (userId, courseId) => {
   try {
+    if (!userId || !courseId) {
+      throw new Error("User ID and course ID on addToCart service is empty");
+    }
     const cart = await getCart(userId);
     if (cart) {
       const existingItem = cart.items.find(
@@ -36,6 +47,7 @@ export const addToCart = async (userId, courseId) => {
       return response.data;
     } else {
       const response = await api.post("/cart", {
+        id: uuidv4(),
         userId,
         items: [{ courseId, quantity: 1 }],
       });

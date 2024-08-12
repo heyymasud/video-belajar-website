@@ -84,8 +84,8 @@ const Cart = () => {
                     </button>
                   </div>
 
-                  {cartItems.map((item) => (
-                    <div className="contents" key={item.id}>
+                  {cartItems.map((item, index) => (
+                    <div className="contents" key={index}>
                       <div className="md:col-span-2">{item.cardTitle}</div>
                       <div className="text-center">
                         {editItemId === item.ids ? (
@@ -93,7 +93,7 @@ const Cart = () => {
                             type="number"
                             value={editQuantity}
                             onChange={handleQuantityChange}
-                            className="w-16 px-2 py-1 border rounded"
+                            className="border border-gray-300 rounded px-2 py-1 w-16"
                           />
                         ) : (
                           item.quantity
@@ -112,14 +112,14 @@ const Cart = () => {
                       <div className="text-right flex flex-col justify-evenly md:block mx-4 md:mx-0">
                         {editItemId === item.ids ? (
                           <button
-                            className="bg-primary-400 hover:bg-primary-500 text-white px-2 py-1 rounded mr-2"
+                            className="bg-primary-400 hover:bg-primary-500 text-white px-2 py-1 rounded"
                             onClick={() => handleUpdate(item)}
                           >
                             <MdSave />
                           </button>
                         ) : (
                           <button
-                            className="bg-secondary-500 hover:bg-[#ffb03a] text-white px-2 py-1 rounded mr-2"
+                            className="bg-secondary-500 hover:bg-[#ffb03a] text-white px-2 py-1 rounded"
                             onClick={() => handleEdit(item)}
                           >
                             <MdEdit />

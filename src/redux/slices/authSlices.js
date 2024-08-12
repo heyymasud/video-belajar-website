@@ -22,6 +22,7 @@ const authSlice = createSlice({
         isLogin: true,
         name: payload.name,
         token: payload.token,
+        userId: payload.userId
       });
       state.isAuthenticated = JSON.parse(isLogin);
       localStorage.setItem("authData", isLogin);

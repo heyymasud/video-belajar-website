@@ -10,10 +10,4 @@ const store = configureStore({
     courses: courseSlices
   },
 });
-console.log("oncreate store", store.getState());
-
-store.subscribe(() => {
-  console.log("onchange store", store.getState());
-});
-
 export default store;
