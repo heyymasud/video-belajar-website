@@ -52,7 +52,7 @@ const Cart = () => {
 
   return (
     <>
-      <div className="fixed right-14 top-5">
+      <div className="fixed right-14 top-5 z-50">
         <div
           className="bg-white border border-[#3A35411F] w-12 h-12 rounded-full flex justify-center items-center cursor-pointer"
           onClick={handleDropDown}

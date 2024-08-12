@@ -11,7 +11,7 @@ const HeroSection = ({
 }) => {
   return (
     <header
-      className={`relative flex flex-col items-center w-full h-[400px] rounded-xl my-7 xl:my-16 overflow-hidden -z-10`}
+      className={`relative flex flex-col items-center w-full h-[400px] rounded-xl my-7 xl:my-16 overflow-hidden`}
     >
       <img
         className="w-full h-full absolute object-cover -z-10"
