@@ -13,7 +13,7 @@ export const getCart = async (userId) => {
     } else {
       console.error("Error fetching cart:", error);
       throw error;
-    }
+    } 
   }
 };
 
