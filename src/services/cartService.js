@@ -1,5 +1,4 @@
 import api from "./api";
-import {v4 as uuidv4} from 'uuid';
 
 export const getCart = async (userId) => {
   try {
@@ -47,7 +46,6 @@ export const addToCart = async (userId, courseId) => {
       return response.data;
     } else {
       const response = await api.post("/cart", {
-        id: uuidv4(),
         userId,
         items: [{ courseId, quantity: 1 }],
       });
